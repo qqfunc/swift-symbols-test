@@ -6,7 +6,7 @@ extension Image {
 
     /// Initializes an `Image` with a system symbol.
     /// - Parameter systemSymbol: The symbol to use for the image.
-    public convenience init(systemSymbol: Symbol) {
+    public convenience init(systemSymbol: SFSymbol) {
         self.init(systemName: systemSymbol.rawValue)
             ?? { fatalError("Cannot initialize Image with symbol: \(systemSymbol.rawValue)") }()
     }
