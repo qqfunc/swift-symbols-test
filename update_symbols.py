@@ -4,7 +4,7 @@ import plistlib
 import sys
 from pathlib import Path
 
-PACKAGE_FILE = Path(__file__).parent / "Sources/Symbols/Symbol.swift"
+PACKAGE_FILE = Path(__file__).parent / "Sources/SFSymbols/SFSymbol.swift"
 
 SF_SYMBOLS_PATH = Path("/Applications/SF Symbols.app")
 SF_SYMBOLS_METADATA_PATH = SF_SYMBOLS_PATH / "Contents/Resources/Metadata"
@@ -37,9 +37,9 @@ def main() -> None:
     # TODO: Mark nonexhaustive: SE-0487 (Nonexhaustive enums).
     enum_statement = (
         "// This file is generated automatically. Do not edit.\n\n"
-        "public enum Symbol: String {\n\n"
+        "public enum SFSymbol: String {\n\n"
         f"{"\n\n".join(cases)}\n\n"
-        "}\n\nextension Symbol: CaseIterable {}\n"
+        "}\n\nextension SFSymbol: CaseIterable {}\n"
     )
 
     PACKAGE_FILE.write_text(enum_statement)
