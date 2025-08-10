@@ -30,6 +30,6 @@ jobs:
     - name: Select Xcode Version
       run: sudo xcode-select -s /Applications/Xcode_26.0.app
     - run: xcodebuild -help
-    - run: xcodebuild -showdestinations
+    - run: xcodebuild -scheme swift-symbols -showdestinations
     - name: Test
       run: xcodebuild -target ${{ matrix.build.target }} -sdk ${{ matrix.build.sdk }} -scheme swift-symbols test
