@@ -22,12 +22,14 @@ jobs:
           target: aarch64-apple-macosx15.0
         - sdk: iphoneos
           target: aarch64-apple-ios18.2
+        - sdk: iphonesimulator
+          target: aarch64-apple-ios18.2-simulator
     steps:
     - name: Checkout ${{ github.repository }}
       uses: actions/checkout@v4.2.2
     - name: Select Xcode Version
       run: sudo xcode-select -s /Applications/Xcode_26.0.app
     - name: Build
-      run: xcrun -sdk ${{ matrix.build.sdk }} swift build -Xswiftc -target -Xswiftc ${{ matrix.build.target }} --triple ${{ matrix.build.target }} --swift-sdk ${{ matrix.build.target }}
+      run: xcrun -sdk ${{ matrix.build.sdk }} swift build -target ${{ matrix.build.target }}
     - name: Test
-      run: xcrun -sdk ${{ matrix.build.sdk }} swift test -Xswiftc -target -Xswiftc ${{ matrix.build.target }} --triple ${{ matrix.build.target }} --swift-sdk ${{ matrix.build.target }}
+      run: xcrun -sdk ${{ matrix.build.sdk }} swift test -target ${{ matrix.build.target }}
