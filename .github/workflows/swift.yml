@@ -34,6 +34,6 @@ jobs:
     - if: matrix.build.platform != 'macOS'
       name: Download ${{ matrix.build.platform }} Platform
       run: xcodebuild -downloadPlatform ${{ matrix.build.platform }}
-    - run: xcodebuild -scheme swift-symbols -showdestinations
+    - run: xcodebuild -scheme swift-sfsymbols -showdestinations
     - name: Test
-      run: xcodebuild -target ${{ matrix.build.target }} -sdk ${{ matrix.build.sdk }} -scheme swift-symbols -destination '${{ matrix.build.destination }}' test
+      run: xcodebuild -target ${{ matrix.build.target }} -sdk ${{ matrix.build.sdk }} -scheme swift-sfsymbols -destination '${{ matrix.build.destination }}' test
