@@ -25,7 +25,7 @@ jobs:
         - platform: iOS
           sdk: iphonesimulator
           target: aarch64-apple-ios18.2-simulator
-          destination: 'platform=iOS Simulator,name=iPhone 6'
+          destination: 'platform=iOS Simulator,name=iPhone 16'
     steps:
     - name: Checkout ${{ github.repository }}
       uses: actions/checkout@v4.2.2
