@@ -3,10 +3,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-symbols",
-    products: [.library(name: "Symbols", targets: ["Symbols"])],
+    name: "swift-sfsymbols",
+    products: [.library(name: "SFSymbols", targets: ["SFSymbols"])],
     targets: [
-        .target(name: "Symbols"),
-        .testTarget(name: "SymbolsTests", dependencies: ["Symbols"]),
+        .target(name: "SFSymbols"),
+        .testTarget(name: "SFSymbolsTests", dependencies: ["SFSymbols"]),
     ]
 )
