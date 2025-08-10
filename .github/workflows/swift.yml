@@ -19,9 +19,9 @@ jobs:
       matrix:
         build:
         - sdk: macosx
-          target: aarch64-apple-macosx
+          target: aarch64-apple-macosx15.0
         - sdk: iphoneos
-          target: aarch64-apple-ios
+          target: aarch64-apple-ios18.2
     steps:
     - name: Checkout ${{ github.repository }}
       uses: actions/checkout@v4.2.2
