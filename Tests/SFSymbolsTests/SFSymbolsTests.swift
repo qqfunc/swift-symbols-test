@@ -1,5 +1,5 @@
 import Testing
-@testable import Symbols
+@testable import SFSymbols
 
 @Test func example() async throws {
     Symbol.`arrow.backward`
