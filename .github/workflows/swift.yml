@@ -17,13 +17,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sdk: [macosx, iphoneos]
+        build:
+        - sdk: macosx
+          target: aarch64-apple-darwin
+        - sdk: iphoneos
+          target: aarch64-apple-ios
     steps:
     - name: Checkout ${{ github.repository }}
       uses: actions/checkout@v4.2.2
     - name: Select Xcode Version
       run: sudo xcode-select -s /Applications/Xcode_26.0.app
     - name: Build
-      run: xcrun -sdk ${{ matrix.sdk }} swift build -v
+      run: xcrun -sdk ${{ matrix.build.sdk }} swift build --target ${{ matrix.build.target }}
     - name: Test
-      run: xcrun -sdk ${{ matrix.sdk }} swift test -v
+      run: xcrun -sdk ${{ matrix.build.sdk }} swift test --target ${{ matrix.build.target }}
