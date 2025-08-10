@@ -30,8 +30,4 @@ jobs:
     - name: Select Xcode Version
       run: sudo xcode-select -s /Applications/Xcode_26.0.app
     - name: Test
-      run: xcodebuild -list
-    - name: Build
-      run: xcrun -sdk ${{ matrix.build.sdk }} swift build -Xswiftc -target -Xswiftc ${{ matrix.build.target }} --triple ${{ matrix.build.target }}
-    - name: Test
-      run: xcrun -sdk ${{ matrix.build.sdk }} swift test -Xswiftc -target -Xswiftc ${{ matrix.build.target }} --triple ${{ matrix.build.target }}
+      run: xcodebuild -target ${{ matrix.build.target }} -sdk ${{ matrix.build.sdk }} -scheme swift-symbols test
