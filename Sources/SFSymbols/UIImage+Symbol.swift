@@ -2,6 +2,7 @@
 
 import UIKit
 
+@available(iOS 2.0, macCatalyst 13.1, visionOS 1.0, watchOS 2.0, *)
 extension UIImage {
 
     /// Initializes a `UIImage` with a system symbol.
