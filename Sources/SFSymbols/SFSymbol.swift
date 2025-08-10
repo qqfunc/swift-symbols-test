@@ -24546,5 +24546,3 @@ public enum SFSymbol: String {
     case `zzz` =  "zzz"
 
 }
-
-extension SFSymbol: CaseIterable {}
