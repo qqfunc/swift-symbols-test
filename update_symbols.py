@@ -53,7 +53,7 @@ def generate_availability(releases: dict[str, str]) -> str:
 
 def generate_case(name: str) -> str:
     """Generate case string."""
-    return f'    case `{name}` =  "{name}"'
+    return f'    case `{name}` = "{name}"'
 
 
 if __name__ == "__main__":
