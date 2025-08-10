@@ -18,22 +18,21 @@ jobs:
       fail-fast: false
       matrix:
         build:
-        - sdk: macosx
+        - platform: macOS
+          sdk: macosx
           target: aarch64-apple-macosx15.0
           destination: "generic/platform=macOS"
-        - sdk: iphoneos
-          target: aarch64-apple-ios18.2
-          destination: "generic/platform=iOS"
-        - sdk: iphonesimulator
+        - platform: iOS
+          sdk: iphonesimulator
           target: aarch64-apple-ios18.2-simulator
-          destination: "generic/platform=iOS"
+          destination: "platform=iOS Simulator,name=iPhone 6"
     steps:
     - name: Checkout ${{ github.repository }}
       uses: actions/checkout@v4.2.2
     - name: Select Xcode Version
       run: sudo xcode-select -s /Applications/Xcode_26.0.app
     - name: Download iOS Simulator
-      run: xcodebuild -downloadPlatform iOS
+      run: xcodebuild -downloadPlatform ${{ matrix.build.platform }}
     - run: xcodebuild -scheme swift-symbols -showdestinations
     - name: Test
       run: xcodebuild -target ${{ matrix.build.target }} -sdk ${{ matrix.build.sdk }} -scheme swift-symbols -destination ${{ matrix.build.destination }} test
