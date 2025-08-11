@@ -19,24 +19,14 @@ jobs:
       matrix:
         build:
         - platform: macOS
-          sdk: macosx
-          target: aarch64-apple-macosx
           destination: 'platform=macOS,name=My Mac'
         - platform: iOS
-          sdk: iphonesimulator
-          target: aarch64-apple-ios-simulator
           destination: 'platform=iOS Simulator,name=iPhone 16'
         - platform: tvOS
-          sdk: appletvsimulator
-          target: aarch64-apple-tvos-simulator
           destination: 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation)'
         - platform: visionOS
-          sdk: applevisionsimulator
-          target: aarch64-apple-visionos-simulator
           destination: 'platform=visionOS Simulator,name=Apple Vision Pro'
         - platform: watchOS
-          sdk: watchsimulator
-          target: aarch64-apple-watchos-simulator
           destination: 'platform=watchOS Simulator,name=Apple Watch Series 9'
     steps:
     - name: Checkout ${{ github.repository }}
@@ -48,5 +38,5 @@ jobs:
       run: xcodebuild -downloadPlatform ${{ matrix.build.platform }}
     - run: xcodebuild -scheme swift-sfsymbols -showdestinations
     - name: Test
-      run: xcodebuild -target ${{ matrix.build.target }} -sdk ${{ matrix.build.sdk }} -scheme swift-sfsymbols -destination '${{ matrix.build.destination }}' test
+      run: xcodebuild -scheme swift-sfsymbols -destination '${{ matrix.build.destination }}' test
       timeout-minutes: 360
