@@ -39,7 +39,8 @@ def main() -> None:
         "// This file is generated automatically. Do not edit.\n\n"
         "public enum SFSymbol: String {\n\n"
         f"{"\n\n".join(cases)}\n\n"
-        "}\n\nextension SFSymbol: CaseIterable {}\n"
+        "}\n"
+        # "}\n\nextension SFSymbol: CaseIterable {}\n"
     )
 
     PACKAGE_FILE.write_text(enum_statement)
