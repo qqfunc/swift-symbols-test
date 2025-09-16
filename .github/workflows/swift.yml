@@ -13,7 +13,7 @@ concurrency:
 jobs:
   build:
     name: Build
-    runs-on: macos-15
+    runs-on: macos-26
     strategy:
       fail-fast: false
       matrix:
@@ -31,11 +31,6 @@ jobs:
     steps:
     - name: Checkout ${{ github.repository }}
       uses: actions/checkout@v4.2.2
-    - name: Select Xcode Version
-      run: sudo xcode-select -s /Applications/Xcode_26.0.app
-    - if: matrix.build.platform != 'macOS'
-      name: Download ${{ matrix.build.platform }} Platform
-      run: xcodebuild -downloadPlatform ${{ matrix.build.platform }}
     - run: xcodebuild -scheme swift-sfsymbols -showdestinations
     - name: Test
       run: xcodebuild -scheme swift-sfsymbols -destination '${{ matrix.build.destination }}' test
