@@ -30,8 +30,7 @@ def main() -> None:
     }
 
     cases = [
-        # f"{availabilities[year]}\n{generate_case(name)}"
-        f"{generate_case(name)}"
+        f"{availabilities[year]}\n{generate_case(name)}"
         for name, year in data["symbols"].items()
     ]
 
