@@ -30,14 +30,15 @@ def main() -> None:
     }
 
     cases = [
-        f"{availabilities[year]}\n{generate_case(name)}"
+        # f"{availabilities[year]}\n{generate_case(name)}"
+        f"{generate_case(name)}"
         for name, year in data["symbols"].items()
     ]
 
     # TODO: Mark nonexhaustive: SE-0487 (Nonexhaustive enums).
     enum_statement = (
         "// This file is generated automatically. Do not edit.\n\n"
-        "public enum SFSymbol: String {\n\n"
+        "public enum SFSymbol {\n\n"
         f"{"\n\n".join(cases)}\n\n"
         "}\n"
         # "}\n\nextension SFSymbol: CaseIterable {}\n"
@@ -54,7 +55,7 @@ def generate_availability(releases: dict[str, str]) -> str:
 
 def generate_case(name: str) -> str:
     """Generate case string."""
-    return f'    case `{name}` = "{name}"'
+    return f"    case `{name}`"
 
 
 if __name__ == "__main__":
