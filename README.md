@@ -1,2 +1,1 @@
-# swift-sfsymbols
-
+# Swift SFSymbols
